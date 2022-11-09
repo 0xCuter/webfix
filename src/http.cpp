@@ -24,10 +24,7 @@ bool check_route(const Request &req, M i)
 	{
 		if (req.url == i->first ||
 			req.url == i->first.substr(0, i->first.length() - 1))
-			{
-				cout << i->first.substr(0, i->first.length() - 1);
 			return true;
-			}
 	}
 	return false;
 }
@@ -35,13 +32,10 @@ bool check_route(const Request &req, M i)
 int method_allowed_route(const Request &req) {
     for (M i = req.host->route_methods.begin(); i!= req.host->route_methods.end() ; i++)
 	{
-		cout << i->first << endl;
 		if (check_route(req, i))
-		{
 			for (size_t j = 0; j < i->second.size(); j++)
 				if (req.method_name == i->second[j])
 					return 1;
-		}
 	}
 	return 0;
 }
